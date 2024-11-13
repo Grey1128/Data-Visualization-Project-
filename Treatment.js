@@ -78,33 +78,33 @@ document.addEventListener("DOMContentLoaded", function () {
        // Add legend
        const legend = svg.append("g")
                          .attr("class", "legend")
-                         .attr("transform", `translate(${width - 60}, ${margin.top})`);
+                         .attr("transform", `translate(${width/2 - 50}, ${margin.top})`);
 
        // China legend
        legend.append("rect")
-             .attr("x", 50)
+             .attr("x", 0)
              .attr("y", 0)
              .attr("width", 18)
              .attr("height", 18)
              .style("fill", "blue");
 
        legend.append("text")
-             .attr("x", 75)
+             .attr("x", 25)
              .attr("y", 14)
              .style("font-size", "18px")
              .text("China");
 
        // India legend
        legend.append("rect")
-             .attr("x", 50)
-             .attr("y", 25)
+             .attr("x", 100) // Offset for second legend item
+             .attr("y", 0)
              .attr("width", 18)
              .attr("height", 18)
              .style("fill", "orange");
 
        legend.append("text")
-             .attr("x", 75)
-             .attr("y", 39)
+             .attr("x", 125)
+             .attr("y", 14)
              .style("font-size", "18px")
              .text("India");
 
