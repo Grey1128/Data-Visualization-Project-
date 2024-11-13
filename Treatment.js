@@ -82,28 +82,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // China legend
        legend.append("rect")
-             .attr("x", 0)
+             .attr("x", 50)
              .attr("y", 0)
              .attr("width", 18)
              .attr("height", 18)
              .style("fill", "blue");
 
        legend.append("text")
-             .attr("x", 25)
+             .attr("x", 75)
              .attr("y", 14)
              .style("font-size", "18px")
              .text("China");
 
        // India legend
        legend.append("rect")
-             .attr("x", 0)
+             .attr("x", 50)
              .attr("y", 25)
              .attr("width", 18)
              .attr("height", 18)
              .style("fill", "orange");
 
        legend.append("text")
-             .attr("x", 25)
+             .attr("x", 75)
              .attr("y", 39)
              .style("font-size", "18px")
              .text("India");
