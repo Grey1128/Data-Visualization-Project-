@@ -1,5 +1,5 @@
 .chart-bg{
-    background-color:rgb(104, 99, 91);
+    background-color:rgb(0, 0, 0);
 }
 
 /* section encasing everything */
@@ -125,12 +125,11 @@
     font-weight: bold;
 }
 
-.class-description p{
+/* .class-description p{
     position: relative;
-    text-align: center;
     font-size: 18px;
 
-}
+} */
 
 
 

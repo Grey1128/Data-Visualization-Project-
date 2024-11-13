@@ -1,10 +1,9 @@
-/* Color palette */
+
 :root {
-    --pearl-bush: #E5DDD1; /* Background color */
-    --flint: #68635B;       /* Dark color for text and elements */
+    --pearl-bush: #E5DDD1;
+    --flint: #68635B;
 }
 
-/* Overall Page Background */
 body {
     background-color: var(--pearl-bush);
     color: var(--flint);
@@ -13,9 +12,72 @@ body {
     padding: 0;
 }
 
+.chart-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
 
+.chart-graph-section {
+    width: 100%;
+    background-color: rgb(229, 221, 209);
+    border-radius: 32px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-/* Dropdown Container Styling */
+.chart-content-box-left,
+.chart-content-box-right {
+    flex: 1;
+    max-width: 650px;
+    height: auto;
+    background-color: var(--pearl-bush);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.chart-graph-left,
+.chart-graph-right {
+    flex: 1;
+    min-width: 60%;
+    padding: 10px;
+    background-color: rgb(229, 221, 209);
+    box-sizing: border-box;
+}
+
+/* Country Navigation Styling */
+.country-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.arrow-button {
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+#country-title {
+    margin: 0;
+    font-size: 50px;
+}
+
+/* Dropdown Styling */
 .dropdown-below-header {
     display: flex;
     justify-content: center;
@@ -28,45 +90,6 @@ body {
     border-radius: 4px;
     background-color: white;
     color: var(--flint);
-}
-
-/* Chart Container Styling for the Right Area */
-#Drug-resist-tb {
-    flex: 1 1 70%; 
-    background-color: var(--pearl-bush);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Bar Styling */
-.bar {
-    transition: fill 0.3s;
-}
-
-.bar:hover {
-    fill: rgba(0, 195, 255, 0.8);
-}
-
-/* Axis Styling */
-.axis--x text,
-.axis--y text {
-    font-size: 12px; 
-    fill: var(--flint);
-}
-
-.axis--x line,
-.axis--y line {
-    stroke: var(--flint);
-}
-
-/* Y-Axis Label Adjustment */
-.y-axis-label {
-    text-anchor: middle;
-    transform: rotate(-90deg);
-    font-size: 14px;
-    fill: var(--flint);
-    transform-origin: left center;
 }
 
 /* Tooltip Styling */
@@ -82,4 +105,37 @@ body {
     z-index: 10;
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+
+/* Chart Titles */
+.chart2-title p,
+.chart3-title p,
+.chart4-title p,
+.map-title p {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Axis and Label Styling */
+.axis--x text, .axis--y text {
+    font-size: 12px;
+    fill: var(--flint);
+}
+
+.axis--x line, .axis--y line {
+    stroke: var(--flint);
+}
+
+.y-axis-label {
+    text-anchor: middle;
+    transform: rotate(-90deg);
+    font-size: 14px;
+    fill: var(--flint);
+    transform-origin: left center;
+}
+
+/* Bar Chart Hover Effect */
+.bar:hover {
+    fill: rgba(0, 195, 255, 0.8);
 }

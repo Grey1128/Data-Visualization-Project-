@@ -6,8 +6,6 @@
     <meta name="description" content="Data Visualisation Exercise 1"/>
     <meta name="keywords" content="HTML, CSS"/>
     <meta name="author" content="Your name here"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
     <title>Tuberculosis Data's in 2015 V.S 2022</title>
     <link rel="stylesheet" type="text/css" href="./index.css">
@@ -50,16 +48,18 @@
     </div>
   
     <!-- Author Section -->
-    <div class="bottom-produce-intro-section">
+    <!-- <div class="bottom-produce-intro-section">
         <span class="text-1">Presented By</span>
         <div class="author-name-container">
             <span class="author">Heong Yu Zheng</span>
             <span class="author">Jorhow Wong</span>
             <span class="author">Adrian Chew</span>
         </div>
-    </div>
-    <div id="tooltip" class="tooltip"></div>
-    <div id="tooltip2" class="tooltip2"></div>
+    </div> -->
+    <div id="tooltip" class="tooltip" style="opacity: 0;"></div>
+    <div id="tooltip2" class="tooltip2" style="opacity: 0;"></div>
+    <div id="tooltipMT" style="opacity: 0;"></div>
+
     <!-- Charts Section -->
     <section class="chart-bg">
 
@@ -73,7 +73,9 @@
                     </div>
                     <div class="class-description">
                         <br>
-                        <p>Here you can provide details about the chart, the selected countries, and specific information on the data being displayed. This content box will dynamically help the users understand the data trends, differences between the countries, and additional context that makes the visualization more meaningful.</p>
+                        <h1>Mortality Due to Tuberculosis:<br> A Comparative Analysis by Country</h1>
+                        <p>This chart illustrates the trends in mortality rates due to tuberculosis (excluding cases involving HIV) over recent years, from 2015 to 2021. Tuberculosis (TB) is a major global health concern, especially in regions with high population densities and limited healthcare infrastructure. This chart aims to provide a comparative view of TB-related deaths across different countries, highlighting key patterns and disparities in TB mortality rates.</p>
+                        <p></p>    
                     </div>
                 </div>
                 <div id="TB_HIV" class="chart-graph-right"></div>
@@ -91,11 +93,11 @@
                 </div>
                 <div id="chart-content-box-right" class="chart-content-box-right">
                     <div id="chart2-title" class="chart2-title">
-                        <p>Mortality</p>
+                        <h1>Mortality Cases of Tuberculosis in <br>China & India</h1>
                     </div>
                     <div class="chart-description">
                         <br>
-                        <p>Here you can provide details about the chart, the selected countries, and specific information on the data being displayed. This content box will dynamically help the users understand the data trends, differences between the countries, and additional context that makes the visualization more meaningful.</p>
+                        <p>This chart provides a comparative view of mortality cases due to tuberculosis in China and India over a recent period, from 2015 to 2021. Tuberculosis (TB) remains a significant public health challenge, particularly in countries with large populations and varying levels of healthcare access.</p>    
                     </div>
     
                 </div>
@@ -104,14 +106,10 @@
         </section>
 
         <section id="chart3" class="chart-section">
-
-            
-            <div id="chart-graph-section" class="chart-graph-section"> 
-
-                
-                <div id="chart-content-box-left" class="chart-content-box-left">
-                    <div id="chart3-title" class="chart3-title">
-                        <p>China: Confirmed Cases of RR-/MDR-TB</p>
+            <div class="chart-graph-section">
+                <div class="chart-content-box-left">
+                    <div class="country-navigation" style="text-align: center;">
+                        <h2 id="chart3-title" class="chart3-title">China: Confirmed Cases of RR-/MDR-TB</h2>
                     </div>
                     <div id="dropdown-container" class="dropdown-below-header">
                         <select id="country-select">
@@ -121,17 +119,11 @@
                         </select>
                     </div>
                     <div class="chart-description">
-                        <br>
-                        <p>Here you can provide details about the chart, the selected countries, and specific information on the data being displayed. This content box will dynamically help the users understand the data trends, differences between the countries, and additional context that makes the visualization more meaningful.</p>
+                        <p>This chart displays the number of confirmed cases of Rifampicin-Resistant (RR) and Multi-Drug Resistant Tuberculosis (MDR-TB) in China over recent years. RR-TB and MDR-TB represent significant challenges in the treatment of tuberculosis, as they are resistant to one or more of the primary TB drugs. The data presented here helps to highlight trends in drug resistance, which is crucial for assessing the effectiveness of current treatment programs and for planning future public health interventions. The dropdown allows for a comparison of this data between China and other countries, offering insight into global TB drug resistance trends.</p>
                     </div>
-    
-                   
                 </div>
-                <div id="Drug-resist-tb" class="chart-graph-right"> </div>
+                <div id="Drug-resist-tb" class="chart-graph-right"></div>
             </div>
-
-            
-
         </section>
 			
 
@@ -141,13 +133,13 @@
                 <div id="treat-chart" class="chart-graph-left"></div>
                 <div id="chart-content-box-right" class="chart-content-box-right">
                     <div class="chart4-title" id="chart4-title">
-                        <p>China V.S. India Treatment Rate</p>            
+                        <h1>Tuberculosis Treatment Success Rate<br>China vs. India </h1>            
                         <br>
 
                     </div>
 
                     <div class="class-description">
-                        <p>Here you can provide details about the chart, the selected countries, and specific information on the data being displayed. This content box will dynamically help the users understand the data trends, differences between the countries, and additional context that makes the visualization more meaningful.</p>
+                        <p>This chart displays the success rates of tuberculosis (TB) treatment in China and India over recent years, from 2015 to 2021. The treatment success rate is a critical metric that reflects the effectiveness of healthcare systems in managing and curing TB cases. This comparison provides insights into how well each country is addressing TB treatment and reflects their healthcare systems' robustness and resource allocation toward TB control.</p>
                     </div>
                 </div>
                 
