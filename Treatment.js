@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
          width = 1000 - margin.left - margin.right,
          height = 850 - margin.top - margin.bottom;
 
+   // Create SVG container
    const svg = d3.select("#treat-chart")
                  .append("svg")
                  .attr("width", width + margin.left + margin.right)
@@ -10,6 +11,18 @@ document.addEventListener("DOMContentLoaded", function () {
                  .append("g")
                  .attr("transform", `translate(${margin.left},${margin.top})`);
 
+   // Create a single tooltip element
+   const tooltipTRT = d3.select("body").append("div")
+       .attr("class", "tooltip")
+       .style("position", "absolute")
+       .style("background-color", "white")
+       .style("padding", "5px")
+       .style("border", "1px solid #ccc")
+       .style("border-radius", "4px")
+       .style("opacity", 0) // Initially hidden
+       .style("pointer-events", "none");
+
+   // Load CSV data
    d3.csv("Treatmentsuccess.csv").then(data => {
        const dataChina = data
            .filter(d => d.Countries === 'China')
@@ -75,38 +88,41 @@ document.addEventListener("DOMContentLoaded", function () {
           .style("font-size", "24px")
           .text("Success Rate (%)");
 
-       // Add legend
-       const legend = svg.append("g")
-                         .attr("class", "legend")
-                         .attr("transform", `translate(${width/2 - 50}, ${margin.top})`);
+       // Add dots and tooltips for each data point
+       const countriesData = [
+           { data: dataChina, color: "blue", country: "China" },
+           { data: dataIndia, color: "orange", country: "India" }
+       ];
 
-       // China legend
-       legend.append("rect")
-             .attr("x", 0)
-             .attr("y", 0)
-             .attr("width", 18)
-             .attr("height", 18)
-             .style("fill", "blue");
-
-       legend.append("text")
-             .attr("x", 25)
-             .attr("y", 14)
-             .style("font-size", "18px")
-             .text("China");
-
-       // India legend
-       legend.append("rect")
-             .attr("x", 100) // Offset for second legend item
-             .attr("y", 0)
-             .attr("width", 18)
-             .attr("height", 18)
-             .style("fill", "orange");
-
-       legend.append("text")
-             .attr("x", 125)
-             .attr("y", 14)
-             .style("font-size", "18px")
-             .text("India");
+       countriesData.forEach(({ data, color, country }) => {
+           svg.selectAll(`.dot-${country}`)
+              .data(data)
+              .enter()
+              .append("circle")
+              .attr("class", `dot dot-${country}`)
+              .attr("cx", d => x(d.Year))
+              .attr("cy", d => y(d.SuccessRate))
+              .attr("r", 5)
+              .attr("fill", color)
+              .on("mouseover", function (event, d) {
+                  tooltipTRT.html(`Country: ${country}<br>Year: ${d.Year}<br>Success Rate: ${d.SuccessRate}%`)
+                      .style("left", (event.pageX + 10) + "px")
+                      .style("top", (event.pageY - 30) + "px")
+                      .transition()
+                      .duration(200)
+                      .style("opacity", 1); // Fade-in effect
+              })
+              .on("mousemove", function (event) {
+                  tooltipTRT
+                      .style("left", (event.pageX + 10) + "px")
+                      .style("top", (event.pageY - 30) + "px");
+              })
+              .on("mouseout", function () {
+                  tooltipTRT.transition()
+                      .duration(200)
+                      .style("opacity", 0); // Fade-out effect
+              });
+       });
 
        console.log("Chart rendering completed.");
    }).catch(error => {
