@@ -10,6 +10,16 @@ const svg = d3.select("#TB_HIV")
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
+const tooltipHIV = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("background-color", "white")
+    .style("padding", "5px")
+    .style("border", "1px solid #ccc")
+    .style("border-radius", "4px")
+    .style("opacity", 0) // Initially hidden
+    .style("pointer-events", "none");
+
 let currentCountry = "China";
 const countries = ["India", "China"]; // List of countries
 let currentIndex = 0; // Index to track the current country
@@ -106,7 +116,42 @@ function updateChart(country) {
             .attr("stroke-dashoffset", 0);
 
         // Exit: Remove any extra paths that are not needed
-        linePath.exit().remove();                            
+        linePath.exit().remove();      
+        
+        const metricData = countryData.map(d => ({ year: d.year, value: d[metric] }));
+    
+        // Remove any existing dots to avoid duplication
+        svg.selectAll(`.dot-${metric}`).remove();
+    
+        // Add dots
+        svg.selectAll(`.dot-${metric}`)
+            .data(metricData)
+            .enter()
+            .append("circle")
+            .attr("class", `dot dot-${metric}`)
+            .attr("cx", d => x(d.year))
+            .attr("cy", d => y(d.value))
+            .attr("r", 5)
+            .attr("fill", color(metric))
+            .on("mouseover", function (event, d) {
+                tooltipHIV.html(`Year: ${d.year}<br>${metric}: ${d.value.toFixed(1)}%`)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 30) + "px")
+                    .transition()
+                    .duration(200)
+                    .style("opacity", 1); // Fade-in effect
+            })
+            .on("mousemove", function (event) {
+                tooltipHIV
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 30) + "px");
+            })
+            .on("mouseout", function () {
+                tooltipHIV.transition()
+                    .duration(200)
+                    .style("opacity", 0); // Fade-out effect
+            });
+            
 
     });
     
