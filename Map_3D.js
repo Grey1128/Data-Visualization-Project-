@@ -78,6 +78,40 @@ Promise.all([
         // Hide tooltip when not hovering
         tooltip.transition().duration(500).style("opacity", 0);
     });
+
+    // Add legend
+const legend = svg.append("g")
+    .attr("class", "legend")
+    .attr("transform", `translate(${widthMap - 150}, ${50})`); // Adjust position as needed
+
+// Legend data
+const legendData = [
+    { color: "red", label: "Positive Incident Rate" },
+    { color: "blue", label: "Negative Incident Rate" },
+    { color: "gray", label: "No Data" }
+];
+
+// Add colored rectangles for each legend item
+legend.selectAll("rect")
+    .data(legendData)
+    .enter()
+    .append("rect")
+    .attr("x", -850)
+    .attr("y", (d, i) => i * 20-32) // Vertical spacing
+    .attr("width", 15)
+    .attr("height", 15)
+    .attr("fill", d => d.color);
+
+// Add text labels for each legend item
+legend.selectAll("text")
+    .data(legendData)
+    .enter()
+    .append("text")
+    .attr("x", -830) // Position text to the right of the rectangle
+    .attr("y", (d, i) => i * 20 -20) // Align text vertically with rectangles
+    .style("font-size", "12px")
+    .text(d => d.label);
+
 }).catch(error => {
     console.error('Error loading the data:', error);
 });

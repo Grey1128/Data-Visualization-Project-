@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .attr("text-anchor", "middle")
           .style("font-size", "24px")
           .text("Success Rate (%)");
+        
 
        // Add dots and tooltips for each data point
        const countriesData = [
@@ -123,6 +124,37 @@ document.addEventListener("DOMContentLoaded", function () {
                       .style("opacity", 0); // Fade-out effect
               });
        });
+
+
+       // Add legend
+        const legend = svg.append("g")
+                            .attr("class", "legend")
+                            .attr("transform", `translate(${width - 200}, ${20})`); // Position legend at the top-right corner
+
+        const legendData = [
+                { color: "blue", label: "China" },
+                { color: "orange", label: "India" }
+            ];
+
+        legend.selectAll("rect")
+                .data(legendData)
+                .enter()
+                .append("rect")
+                .attr("x", -650)
+                .attr("y", (d, i) => i * 20-30) // 20px gap between legend items
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", d => d.color);
+
+        legend.selectAll("text")
+                .data(legendData)
+                .enter()
+                .append("text")
+                .attr("x", -630) // Position text to the right of the rectangle
+                .attr("y", (d, i) => i * 20 -18) // Align text vertically with rectangles
+                .style("font-size", "14px")
+                .text(d => d.label);
+
 
        console.log("Chart rendering completed.");
    }).catch(error => {
